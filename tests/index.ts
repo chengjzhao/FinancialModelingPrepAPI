@@ -1,5 +1,5 @@
-import { add } from '../src/';
 import { expect } from 'chai';
+import { add } from '../src';
 
 describe('add()', () => {
   it('should return 6 when arguments are 2 and 4', () => {
