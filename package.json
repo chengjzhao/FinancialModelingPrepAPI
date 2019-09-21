@@ -11,7 +11,8 @@
     "build": "./node_modules/.bin/tsc -p .",
     "build:check": "tsc --noEmit",
     "lint": "./node_modules/.bin/eslint . --ext .js,.ts && echo 'Lint complete.'",
-    "clean": "rm -rf .nyc_output coverage",
+    "lint:fix": "./node_modules/.bin/eslint --fix . --ext .js,.ts && echo 'Lint Fix complete.'",
+    "clean": "rm -rf .nyc_output coverage lib",
     "prepublish": "npm run build"
   },
   "repository": {
