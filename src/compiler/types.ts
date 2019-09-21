@@ -39,7 +39,7 @@ export interface FinancialStatement {
   'Cost of Revenue': string;
   'Gross Profit': string;
   'R&D Expenses': string;
-  'SG&A Expense':string;
+  'SG&A Expense': string;
   'Operating Expenses': string;
   'Operating Income': string;
   'Interest Expense': string;

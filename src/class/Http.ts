@@ -4,11 +4,24 @@ import * as url from 'url';
 import * as querystring from 'querystring';
 import { HttpOptions } from '../compiler/types';
 
+declare interface Http {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  emit(event: string, ...args: any[]): boolean;
+  on(event: string, listener: (...args: any[]) => void): this;
+  once(event: string, listener: (...args: any[]) => void): this;
+  addListener(event: string, listener: (...args: any[]) => void): this;
+  removeListener(event: string, listener: (...args: any[]) => void): this;
+  removeAllListeners(event?: string): this;
+  listenerCount(type: string): number;
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+}
+
 /**
  * @constructor
  * @extends EventEmitter
  */
-export default class Http extends EventEmitter {
+class Http extends EventEmitter {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   request(options: HttpOptions): Promise<any> {
     return new Promise((resolve, reject): void => {
       const qs = options.qs ? querystring.stringify(options.qs) : null;
@@ -31,10 +44,10 @@ export default class Http extends EventEmitter {
         res.on('end', () => {
           try {
             const parsed = JSON.parse(data);
-            this.emit('http:request', parsed);
+            this.emit('http:response', parsed);
             resolve(parsed);
           } catch (err) {
-            this.emit('http:request', data);
+            this.emit('http:response', data);
             resolve(data);
           }
         });
@@ -48,3 +61,5 @@ export default class Http extends EventEmitter {
     });
   }
 }
+
+export default Http;
