@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/chengjzhao/FinancialModelingPrepAPI#readme",
   "devDependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.6.3"
