@@ -1,5 +1,5 @@
 import Http from './Http';
-import environment from '../../environments/environment';
+import environment from '../environments/environment';
 import { CompanyProfile, FinancialStatements } from '../compiler/types';
 
 const { apiUrl } = environment;
