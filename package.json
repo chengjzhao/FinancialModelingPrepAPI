@@ -6,9 +6,12 @@
   "types": "lib",
   "scripts": {
     "test": "./node_modules/.bin/mocha -r ts-node/register",
+    "coverage": "./node_modules/.bin/nyc npm test",
+    "coverage:html": "./node_modules/.bin/nyc --reporter=html npm test",
     "build": "./node_modules/.bin/tsc -p .",
     "build:check": "tsc --noEmit",
-    "lint": "./node_modules/.bin/tslint --config tslint.json --project tsconfig.json 'src/**/*.ts' && echo 'Lint complete.'"
+    "lint": "./node_modules/.bin/tslint --config tslint.json --project tsconfig.json 'src/**/*.ts' && echo 'Lint complete.'",
+    "clean": "rm -rf .nyc_output coverage"
   },
   "repository": {
     "type": "git",
