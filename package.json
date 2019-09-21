@@ -7,6 +7,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha -r ts-node/register",
     "build": "./node_modules/.bin/tsc -p .",
+    "build:check": "tsc --noEmit",
     "lint": "./node_modules/.bin/tslint --config tslint.json --project tsconfig.json 'src/**/*.ts' && echo 'Lint complete.'"
   },
   "repository": {
@@ -30,5 +31,8 @@
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.6.3"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "files": [
+    "lib"
+  ]
 }
