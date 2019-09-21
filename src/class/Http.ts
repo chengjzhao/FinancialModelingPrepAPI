@@ -4,6 +4,10 @@ import * as url from 'url';
 import * as querystring from 'querystring';
 import { HttpOptions } from '../compiler/types';
 
+/**
+ * @constructor
+ * @extends EventEmitter
+ */
 export default class Http extends EventEmitter {
   request(options: HttpOptions): Promise<any> {
     return new Promise((resolve, reject): void => {
