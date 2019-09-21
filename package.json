@@ -1,0 +1,23 @@
+{
+  "name": "financial-modeling-prep-api",
+  "version": "1.0.0",
+  "description": "Node.js wrapper for Financial Modeling Prep API @ https://financialmodelingprep.com/developer/docs/",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chengjzhao/FinancialModelingPrepAPI.git"
+  },
+  "keywords": [],
+  "author": "Henry Zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chengjzhao/FinancialModelingPrepAPI/issues"
+  },
+  "homepage": "https://github.com/chengjzhao/FinancialModelingPrepAPI#readme",
+  "devDependencies": {
+    "typescript": "^3.6.3"
+  }
+}
