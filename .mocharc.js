@@ -23,4 +23,5 @@ module.exports = {
   recursive: true,
   timeout: 15000,
   spec: ['./tests/**'],
+  require: ['ts-node/register', 'source-map-support/register']
 };
