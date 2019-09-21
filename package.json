@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/chengjzhao/FinancialModelingPrepAPI#readme",
   "devDependencies": {
+    "tslint": "^5.20.0",
     "typescript": "^3.6.3"
   }
 }
