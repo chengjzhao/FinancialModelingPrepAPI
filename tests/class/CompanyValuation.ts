@@ -1,29 +1,29 @@
+import 'mocha';
 import { expect } from 'chai';
 import CompanyValuation from '../../src/class/CompanyValuation';
 import { CompanyProfile } from '../../src/compiler/types';
-import 'mocha';
 
-describe('CompanyValuation', function() {
+describe('CompanyValuation', () => {
   const companyValuation = new CompanyValuation();
 
-  it('should return an instance of HTTP on initialization', function() {
+  it('should return an instance of HTTP on initialization', () => {
     expect(companyValuation).to.be.an('object');
-    expect(companyValuation instanceof CompanyValuation).to.be.true;
+    expect(companyValuation instanceof CompanyValuation).eq(true);
   });
 
-  describe('profile()', function() {
+  describe('profile()', () => {
     const symbol = 'AAPL'; // Apple Inc.
     let response: CompanyProfile;
 
-    before(async function() {
+    before(async () => {
       response = await companyValuation.profile(symbol);
     });
 
-    it('should return a response as an object', function() {
+    it('should return a response as an object', () => {
       expect(response).to.be.an('object');
     });
 
-    it(`should have symbol property equals to ${symbol}`, function() {
+    it(`should have symbol property equals to ${symbol}`, () => {
       expect(response.symbol).eq(symbol);
     });
   });

@@ -1,25 +1,26 @@
+import 'mocha';
 import { expect } from 'chai';
 import Http from '../../src/class/Http';
-import 'mocha';
+import { CompanyProfile } from '../../src/compiler/types';
 
-describe('Http', function() {
+describe('Http', () => {
   const http = new Http();
 
-  it('should return an instance of HTTP on initialization', function() {
+  it('should return an instance of HTTP on initialization', () => {
     expect(http).to.be.an('object');
-    expect(http instanceof Http).to.be.true;
+    expect(http instanceof Http).eq(true);
   });
 
-  describe('request()', function() {
-    const url = 'http://jsonplaceholder.typicode.com/posts?userId=1';
-    let response: any;
+  describe('request()', () => {
+    const url = 'https://financialmodelingprep.com/api/v3/company/profile/AAPL';
+    let response: CompanyProfile;
 
-    before(async function() {
+    before(async () => {
       response = await http.request({ url });
     });
 
-    it('should return a response as an array', function() {
-      expect(response).to.be.an('array');
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
     });
   });
 });

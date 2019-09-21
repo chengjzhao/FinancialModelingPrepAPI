@@ -2,28 +2,13 @@ import { EventEmitter } from 'events';
 import { request } from 'https';
 import * as url from 'url';
 import * as querystring from 'querystring';
-
-export interface IHttpOptions {
-  url: string;
-  method?: string;
-  qs?: {
-    [s: string]: string;
-  };
-  headers?: {
-    [s: string]: string;
-  };
-  body?: any;
-}
+import { HttpOptions } from '../compiler/types';
 
 export default class Http extends EventEmitter {
-  constructor() {
-    super();
-  }
-
-  request(options: IHttpOptions): Promise<any> {
-    return new Promise((resolve, reject) => {
+  request(options: HttpOptions): Promise<any> {
+    return new Promise((resolve, reject): void => {
       const qs = options.qs ? querystring.stringify(options.qs) : null;
-      const parsedUrl = url.parse(<string>options.url);
+      const parsedUrl = url.parse(options.url);
       const httpOptions = {
         headers: options.headers || {},
         method: options.method || 'GET',

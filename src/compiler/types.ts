@@ -1,7 +1,19 @@
+export interface HttpOptions {
+  url: string;
+  method?: string;
+  qs?: {
+    [s: string]: string;
+  };
+  headers?: {
+    [s: string]: string;
+  };
+  body?: { [s: string]: string } | Array<{ [s: string]: string }>;
+}
+
 export interface CompanyProfile {
   symbol: string;
   profile: {
-    price:number;
+    price: number;
     beta: string;
     volAvg: string;
     mktCap: string;
@@ -17,5 +29,5 @@ export interface CompanyProfile {
     ceo: string;
     sector: string;
     image: string;
-  }
+  };
 }
