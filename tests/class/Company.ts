@@ -8,7 +8,7 @@ describe('Company', () => {
   let company: Company;
 
   beforeEach(() => {
-    company = new Company();
+    company = new Company(symbol);
   });
 
   it('should return an instance of Company on initialization', () => {
@@ -20,7 +20,7 @@ describe('Company', () => {
     let response: CompanyProfile;
 
     before(async () => {
-      response = await company.profile(symbol);
+      response = await company.profile();
     });
 
     it('should return a response as an object', () => {
@@ -36,7 +36,7 @@ describe('Company', () => {
     let response: FinancialStatements;
 
     before(async () => {
-      response = await company.financialStatements(symbol);
+      response = await company.financialStatements();
     });
 
     it('should return a response as an object', () => {

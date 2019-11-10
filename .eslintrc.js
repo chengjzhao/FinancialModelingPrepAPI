@@ -31,7 +31,8 @@ module.exports = {
     }
   },
   rules: {
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+    'lines-between-class-members': 'off'
   },
   plugins: [
     '@typescript-eslint',
