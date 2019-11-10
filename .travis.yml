@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - 10
+env:
+  - BUILD_SERVER=travis
+before_install:
+  - echo "before_install"
+install:
+  - echo "install"
+  - npm install
+script:
+  - echo "script"
+  - npm test
