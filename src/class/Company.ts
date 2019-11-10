@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { http, HttpComponent } from '../helpers/http';
-import { CompanyProfile, FinancialStatements } from '../compiler/types';
+import { CompanyProfile, FinancialRatios } from '../compiler/types';
 
 /**
  * @constructor
@@ -19,30 +19,47 @@ export class Company implements HttpComponent {
    * @description Companies profile (Price, Beta, Volume Average, Market Capitalization, Last Dividend, 52 week range, stock price change, stock price change in percentage, Company Name, Exchange, Description, Industry, Sector, CEO, Website and image)
    */
   async profile(symbol?: string): Promise<CompanyProfile> {
-    const url = `/company/profile/${this.symbol || symbol}`;
-    const response = await this.request({ url });
+    const options = {
+      url: `/company/profile/${this.symbol || symbol}`,
+    };
+    const response = await this.request(options);
     return response.data;
   }
 
-  /**
-   * Company Financial Statements
-   */
-  async financialStatements({
-    symbol,
-    period,
-    datatype,
-  }: {
-    symbol?: string;
-    period?: 'quarter';
-    datatype?: 'csv';
-  } = {}): Promise<FinancialStatements> {
-    const url = `/financials/income-statement/${this.symbol || symbol}`;
-    const options = {
-      url,
-      params: {
+  statements(): { income: Function; balanceSheet: Function; cashFlow: Function } {
+    const createMethod: Function = (type: string) => {
+      const method: Function = async ({
+        symbol,
         period,
         datatype,
-      },
+      }: {
+        symbol?: string;
+        period?: 'quarter';
+        datatype?: 'csv';
+      } = {}) => {
+        const options = {
+          url: `/financials/${type}/${this.symbol || symbol}`,
+          params: {
+            period,
+            datatype,
+          },
+        };
+        const response = await this.request(options);
+        return response.data;
+      };
+      return method;
+    };
+
+    return {
+      income: createMethod('income-statement'),
+      balanceSheet: createMethod('balance-sheet-statement'),
+      cashFlow: createMethod('cash-flow-statement'),
+    };
+  }
+
+  async financialRatios(symbol?: string): Promise<FinancialRatios> {
+    const options = {
+      url: `/financial-ratios/${this.symbol || symbol}`,
     };
     const response = await this.request(options);
     return response.data;
