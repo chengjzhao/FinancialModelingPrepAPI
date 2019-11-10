@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Node.js wrapper for Financial Modeling Prep API @ https://financialmodelingprep.com/developer/docs/",
   "main": "lib/index.js",
-  "types": "lib",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
     "coverage": "./node_modules/.bin/nyc npm test",
