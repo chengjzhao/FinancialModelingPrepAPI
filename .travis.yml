@@ -11,7 +11,7 @@ install:
 script:
   - echo "script"
   - npm run lint
-  - npm test
+  - npm run coverage
 after_success:
   - npm run coveralls
 branches:
