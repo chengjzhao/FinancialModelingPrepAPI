@@ -1,17 +1,24 @@
-import { http } from '../helpers/http';
+import { AxiosInstance } from 'axios';
+import { http, HttpComponent } from '../helpers/http';
 import { CompanyProfile, FinancialStatements } from '../compiler/types';
 
 /**
  * @constructor
  */
-export class Company {
+export class Company implements HttpComponent {
+  request: AxiosInstance;
+
+  constructor() {
+    this.request = http;
+  }
+
   /**
    * Company Profile
    * @description Companies profile (Price, Beta, Volume Average, Market Capitalization, Last Dividend, 52 week range, stock price change, stock price change in percentage, Company Name, Exchange, Description, Industry, Sector, CEO, Website and image)
    */
   async profile(symbol: string): Promise<CompanyProfile> {
     const url = `/company/profile/${symbol}`;
-    const response = await http.request({ url });
+    const response = await this.request({ url });
     return response.data;
   }
 
@@ -27,7 +34,7 @@ export class Company {
         datatype,
       },
     };
-    const response = await http.request(options);
+    const response = await this.request(options);
     return response.data;
   }
 }

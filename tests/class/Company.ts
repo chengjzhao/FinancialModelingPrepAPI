@@ -1,5 +1,4 @@
 import 'mocha';
-import sinon from 'sinon';
 import { expect } from 'chai';
 import { Company } from '../../src/class/Company';
 import { CompanyProfile, FinancialStatements } from '../../src/compiler/types';
@@ -8,18 +7,17 @@ describe('Company', () => {
   const symbol = 'AAPL'; // Apple Inc.
   let company: Company;
 
+  beforeEach(() => {
+    company = new Company();
+  });
+
   it('should return an instance of Company on initialization', () => {
     expect(company).to.be.an('object');
     expect(company instanceof Company).eq(true);
   });
 
-  beforeEach(() => {
-    company = new Company();
-  });
-
   describe('profile()', () => {
     let response: CompanyProfile;
-      const spy = sinon.spy();
 
     before(async () => {
       response = await company.profile(symbol);
