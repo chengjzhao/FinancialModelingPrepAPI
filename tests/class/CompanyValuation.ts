@@ -1,6 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
-import CompanyValuation from '../../src/class/CompanyValuation';
+import { CompanyValuation } from '../../src/class/CompanyValuation';
 import { CompanyProfile, FinancialStatements } from '../../src/compiler/types';
 
 describe('CompanyValuation', () => {

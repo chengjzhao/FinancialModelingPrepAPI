@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
-import Http from './class/Http';
-import CompanyValuation from './class/CompanyValuation';
+import { Http } from './class/Http';
+import { CompanyValuation } from './class/CompanyValuation';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 function applyMixins(derivedCtor: any, baseCtors: any[]): void {
@@ -27,4 +27,4 @@ applyMixins(FinancialModelingPrep, [EventEmitter, Http, CompanyValuation]);
 
 FinancialModelingPrep.prototype.constructor = FinancialModelingPrep;
 
-export default FinancialModelingPrep;
+export { FinancialModelingPrep };

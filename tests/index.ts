@@ -1,6 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
-import FinancialModelingPrep from '../src';
+import { FinancialModelingPrep } from '../src';
 import { CompanyProfile } from '../src/compiler/types';
 
 describe('FinancialModelingPrep', () => {

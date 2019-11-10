@@ -62,4 +62,4 @@ class Http extends EventEmitter {
   }
 }
 
-export default Http;
+export { Http };

@@ -1,7 +1,7 @@
 import 'mocha';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import Http from '../../src/class/Http';
+import { Http } from '../../src/class/Http';
 import { CompanyProfile } from '../../src/compiler/types';
 
 describe('Http', () => {
