@@ -12,6 +12,8 @@ script:
   - echo "script"
   - npm run lint
   - npm test
+after_success:
+  - npm run coveralls
 branches:
   only:
   - master
