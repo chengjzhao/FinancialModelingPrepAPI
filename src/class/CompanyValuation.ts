@@ -1,6 +1,6 @@
 import Http from './Http';
 import environment from '../environments/environment';
-import { CompanyProfile, FinancialStatements } from '../compiler/types';
+import { CompanyProfile, FinancialStatements, HttpOptions } from '../compiler/types';
 
 const { apiUrl } = environment;
 
@@ -21,8 +21,16 @@ export default class CompanyValuation extends Http {
   /**
    * Company Financial Statements
    */
-  financialStatements(symbol: string, period?: 'quarter'): Promise<FinancialStatements> {
+
+  financialStatements(symbol: string, period?: 'quarter', datatype?: 'csv'): Promise<FinancialStatements> {
     const url = `${apiUrl}/financials/income-statement/${symbol}`;
-    return this.request({ url, qs: { period } });
+    const options: HttpOptions = {
+      url,
+      qs: {
+        period,
+        datatype
+      }
+    };
+    return this.request(options);
   }
 }
