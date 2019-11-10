@@ -28,8 +28,8 @@ export default class CompanyValuation extends Http {
       url,
       qs: {
         period,
-        datatype
-      }
+        datatype,
+      },
     };
     return this.request(options);
   }
