@@ -13,8 +13,8 @@
     "build": "./node_modules/.bin/tsc -p .",
     "postbuild": "echo Files compiled",
     "build:check": "tsc --noEmit",
-    "lint": "./node_modules/.bin/eslint . --ext .js,.ts && echo 'Lint complete.'",
-    "lint:fix": "./node_modules/.bin/eslint --fix . --ext .js,.ts && echo 'Lint Fix complete.'",
+    "lint": "./node_modules/.bin/eslint . --ext .js,.ts",
+    "lint:fix": "./node_modules/.bin/eslint --fix . --ext .js,.ts",
     "clean": "rm -rf .nyc_output coverage lib",
     "prepublish": "npm run build"
   },
