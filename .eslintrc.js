@@ -30,6 +30,9 @@ module.exports = {
       }
     }
   },
+  rules: {
+    'import/prefer-default-export': 'off'
+  },
   plugins: [
     '@typescript-eslint',
     'prettier',
