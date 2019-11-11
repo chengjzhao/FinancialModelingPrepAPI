@@ -7,6 +7,10 @@ import {
   BalanceSheetStatements,
   CashFlowStatements,
   CompanyRating,
+  FinancialRatios,
+  EnterpriseValues,
+  CompanyKeyMetrics,
+  FinancialStatementGrowths,
 } from '../../src/compiler/types';
 
 describe('Company', () => {
@@ -93,6 +97,70 @@ describe('Company', () => {
       it(`should have symbol property equals to ${symbol}`, () => {
         expect(cashFlow.symbol).eq(symbol);
       });
+    });
+  });
+
+  describe('financialRatios()', () => {
+    let response: FinancialRatios;
+
+    before(async () => {
+      response = await company.financialRatios();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+
+    it(`should have symbol property equals to ${symbol}`, () => {
+      expect(response.symbol).eq(symbol);
+    });
+  });
+
+  describe('enterpriseValue()', () => {
+    let response: EnterpriseValues;
+
+    before(async () => {
+      response = await company.enterpriseValue();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+
+    it(`should have symbol property equals to ${symbol}`, () => {
+      expect(response.symbol).eq(symbol);
+    });
+  });
+
+  describe('companyKeyMetric()', () => {
+    let response: CompanyKeyMetrics;
+
+    before(async () => {
+      response = await company.companyKeyMetric();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+
+    it(`should have symbol property equals to ${symbol}`, () => {
+      expect(response.symbol).eq(symbol);
+    });
+  });
+
+  describe('financialStatementGrowth()', () => {
+    let response: FinancialStatementGrowths;
+
+    before(async () => {
+      response = await company.financialStatementGrowth();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+
+    it(`should have symbol property equals to ${symbol}`, () => {
+      expect(response.symbol).eq(symbol);
     });
   });
 });
