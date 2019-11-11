@@ -138,13 +138,7 @@ export class Company implements HttpComponent {
   }
 
   async historicalPrice(args: HistoricalPriceOptions = {}): Promise<HistoricalPrice> {
-    const {
-      symbol,
-      serietype,
-      timeseries,
-      from,
-      to,
-    } = args;
+    const { symbol, serietype, timeseries, from, to } = args;
     const options = {
       url: `/historical-price-full/${this.symbol || symbol}`,
       params: {
