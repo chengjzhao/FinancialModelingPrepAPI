@@ -1,17 +1,5 @@
 type StockSymbol = string;
 
-export interface HttpOptions {
-  url: string;
-  method?: string;
-  qs?: {
-    [s: string]: string | undefined;
-  };
-  headers?: {
-    [s: string]: string;
-  };
-  body?: { [s: string]: string } | Array<{ [s: string]: string }>;
-}
-
 export interface CompanyProfile {
   symbol: StockSymbol;
   profile: {
