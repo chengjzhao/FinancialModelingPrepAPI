@@ -7,6 +7,10 @@ import {
   EnterpriseValues,
   CompanyKeyMetrics,
   FinancialStatementGrowths,
+  DiscountedCashFlow,
+  Price,
+  HistoricalPriceOptions,
+  HistoricalPrice,
 } from '../compiler/types';
 
 /**
@@ -111,6 +115,43 @@ export class Company implements HttpComponent {
       url: `/financial-statement-growth/${this.symbol || symbol}`,
       params: {
         period,
+      },
+    };
+    const response = await this.request(options);
+    return response.data;
+  }
+
+  async discountedCashFlow(symbol?: string): Promise<DiscountedCashFlow> {
+    const options = {
+      url: `/company/discounted-cash-flow/${this.symbol || symbol}`,
+    };
+    const response = await this.request(options);
+    return response.data;
+  }
+
+  async price(symbol?: string): Promise<Price> {
+    const options = {
+      url: `/stock/real-time-price/${this.symbol || symbol}`,
+    };
+    const response = await this.request(options);
+    return response.data;
+  }
+
+  async historicalPrice(args: HistoricalPriceOptions = {}): Promise<HistoricalPrice> {
+    const {
+      symbol,
+      serietype,
+      timeseries,
+      from,
+      to,
+    } = args;
+    const options = {
+      url: `/historical-price-full/${this.symbol || symbol}`,
+      params: {
+        serietype,
+        timeseries,
+        from,
+        to,
       },
     };
     const response = await this.request(options);

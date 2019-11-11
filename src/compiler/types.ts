@@ -314,3 +314,30 @@ export interface FinancialStatementGrowths {
   symbol: StockSymbol;
   growth: FinancialStatementGrowth[];
 }
+
+export interface DiscountedCashFlow {
+  symbol: StockSymbol;
+  date: string;
+  'Stock Price': number;
+  DCF: number;
+}
+
+export interface Price {
+  symbol: StockSymbol;
+  price: number;
+}
+
+export interface HistoricalPriceOptions {
+  symbol?: string;
+  serietype?: 'line';
+  timeseries?: number;
+  from?: string;
+  to?: string;
+}
+
+export interface HistoricalPrice {
+  symbol: StockSymbol;
+  date: string;
+  'Stock Price': number;
+  DCF: number;
+}
