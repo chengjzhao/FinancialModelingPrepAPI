@@ -12,7 +12,7 @@ describe('StockMarket', () => {
 
   it('should return an instance of StockMarket on initialization', () => {
     expect(stockMarket).to.be.an('object');
-    expect(stockMarket instanceof StockMarket).eq(true);
+    expect(stockMarket).to.be.an.instanceof(StockMarket);
   });
 
   describe('majorIndexes()', () => {

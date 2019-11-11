@@ -26,7 +26,7 @@ describe('Company', () => {
 
   it('should return an instance of Company on initialization', () => {
     expect(company).to.be.an('object');
-    expect(company instanceof Company).eq(true);
+    expect(company).to.be.an.instanceof(Company);
   });
 
   describe('profile()', () => {
