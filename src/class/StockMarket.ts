@@ -1,13 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { http, HttpComponent } from '../helpers/http';
-import {
-  MajorIndexes,
-  Index,
-  MostActiveStock,
-  MostGainerStock,
-  MostLoserStock,
-  StockUpdate,
-} from '../compiler/types';
+import { MajorIndexes, Index, MostActiveStock, MostGainerStock, MostLoserStock, StockUpdate } from '../compiler/types';
 
 /**
  * @constructor
@@ -24,7 +17,7 @@ export class StockMarket implements HttpComponent {
       url: '/majors-indexes',
     };
     const response = await this.request(options);
-    const data: MajorIndexes = response.data;
+    const { data }: { data: MajorIndexes } = response;
     return data.majorIndexesList;
   }
 
@@ -41,7 +34,7 @@ export class StockMarket implements HttpComponent {
       url: '/stock/actives',
     };
     const response = await this.request(options);
-    const data: MostActiveStock = response.data;
+    const { data }: { data: MostActiveStock } = response;
     return data.mostActiveStock;
   }
 
@@ -50,7 +43,7 @@ export class StockMarket implements HttpComponent {
       url: '/stock/gainers',
     };
     const response = await this.request(options);
-    const data: MostGainerStock = response.data;
+    const { data }: { data: MostGainerStock } = response;
     return data.mostGainerStock;
   }
 
@@ -59,7 +52,7 @@ export class StockMarket implements HttpComponent {
       url: '/stock/losers',
     };
     const response = await this.request(options);
-    const data: MostLoserStock = response.data;
+    const { data }: { data: MostLoserStock } = response;
     return data.mostLoserStock;
   }
 
@@ -70,5 +63,4 @@ export class StockMarket implements HttpComponent {
     const response = await this.request(options);
     return response.data.isTheStockMarketOpen;
   }
-
 }
