@@ -1,6 +1,13 @@
 import { AxiosInstance } from 'axios';
 import { http, HttpComponent } from '../helpers/http';
-import { CompanyProfile, FinancialRatios } from '../compiler/types';
+import {
+  CompanyProfile,
+  CompanyRating,
+  FinancialRatios,
+  EnterpriseValues,
+  CompanyKeyMetrics,
+  FinancialStatementGrowths,
+} from '../compiler/types';
 
 /**
  * @constructor
@@ -21,6 +28,14 @@ export class Company implements HttpComponent {
   async profile(symbol?: string): Promise<CompanyProfile> {
     const options = {
       url: `/company/profile/${this.symbol || symbol}`,
+    };
+    const response = await this.request(options);
+    return response.data;
+  }
+
+  async rating(symbol?: string): Promise<CompanyRating> {
+    const options = {
+      url: `/company/rating/${this.symbol || symbol}`,
     };
     const response = await this.request(options);
     return response.data;
@@ -50,16 +65,53 @@ export class Company implements HttpComponent {
       return method;
     };
 
+    const income = createMethod('income-statement');
+    const balanceSheet = createMethod('balance-sheet-statement');
+    const cashFlow = createMethod('cash-flow-statement');
+
     return {
-      income: createMethod('income-statement'),
-      balanceSheet: createMethod('balance-sheet-statement'),
-      cashFlow: createMethod('cash-flow-statement'),
+      income,
+      balanceSheet,
+      cashFlow,
     };
   }
 
   async financialRatios(symbol?: string): Promise<FinancialRatios> {
     const options = {
       url: `/financial-ratios/${this.symbol || symbol}`,
+    };
+    const response = await this.request(options);
+    return response.data;
+  }
+
+  async enterpriseValue(symbol?: string, period?: 'quarter'): Promise<EnterpriseValues> {
+    const options = {
+      url: `/enterprise-value/${this.symbol || symbol}`,
+      params: {
+        period,
+      },
+    };
+    const response = await this.request(options);
+    return response.data;
+  }
+
+  async companyKeyMetric(symbol?: string, period?: 'quarter'): Promise<CompanyKeyMetrics> {
+    const options = {
+      url: `/company-key-metrics/${this.symbol || symbol}`,
+      params: {
+        period,
+      },
+    };
+    const response = await this.request(options);
+    return response.data;
+  }
+
+  async financialStatementGrowth(symbol?: string, period?: 'quarter'): Promise<FinancialStatementGrowths> {
+    const options = {
+      url: `/financial-statement-growth/${this.symbol || symbol}`,
+      params: {
+        period,
+      },
     };
     const response = await this.request(options);
     return response.data;
