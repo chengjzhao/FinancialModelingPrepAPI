@@ -341,3 +341,34 @@ export interface HistoricalPrice {
   'Stock Price': number;
   DCF: number;
 }
+
+export interface Index {
+  ticker: string;
+  changes: string;
+  price: string;
+  indexName: string;
+}
+
+export interface MajorIndexes {
+  majorIndexesList: Index[];
+}
+
+export interface StockUpdate {
+  ticker: string;
+  changes: number;
+  price: string;
+  changesPercentage: string;
+  companyName: string;
+}
+
+export interface MostActiveStock {
+  mostActiveStock: StockUpdate[];
+}
+
+export interface MostGainerStock {
+  mostGainerStock: StockUpdate[];
+}
+
+export interface MostLoserStock {
+  mostLoserStock: StockUpdate[];
+}
