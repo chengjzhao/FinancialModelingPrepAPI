@@ -1,7 +1,13 @@
 import 'mocha';
 import { expect } from 'chai';
 import { Company } from '../../src/class/Company';
-import { CompanyProfile, IncomeStatements, BalanceSheetStatements, CashFlowStatements } from '../../src/compiler/types';
+import {
+  CompanyProfile,
+  IncomeStatements,
+  BalanceSheetStatements,
+  CashFlowStatements,
+  CompanyRating,
+} from '../../src/compiler/types';
 
 describe('Company', () => {
   const symbol = 'AAPL'; // Apple Inc.
@@ -21,6 +27,22 @@ describe('Company', () => {
 
     before(async () => {
       response = await company.profile();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+
+    it(`should have symbol property equals to ${symbol}`, () => {
+      expect(response.symbol).eq(symbol);
+    });
+  });
+
+  describe('rating()', () => {
+    let response: CompanyRating;
+
+    before(async () => {
+      response = await company.rating();
     });
 
     it('should return a response as an object', () => {
