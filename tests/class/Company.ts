@@ -11,6 +11,9 @@ import {
   EnterpriseValues,
   CompanyKeyMetrics,
   FinancialStatementGrowths,
+  DiscountedCashFlow,
+  Price,
+  HistoricalPrice,
 } from '../../src/compiler/types';
 
 describe('Company', () => {
@@ -153,6 +156,50 @@ describe('Company', () => {
 
     before(async () => {
       response = await company.financialStatementGrowth();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+
+    it(`should have symbol property equals to ${symbol}`, () => {
+      expect(response.symbol).eq(symbol);
+    });
+  });
+
+  describe('discountedCashFlow()', () => {
+    let response: DiscountedCashFlow;
+
+    before(async () => {
+      response = await company.discountedCashFlow();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+
+    it(`should have symbol property equals to ${symbol}`, () => {
+      expect(response.symbol).eq(symbol);
+    });
+  });
+
+  describe('price()', () => {
+    let response: Price;
+
+    before(async () => {
+      response = await company.price();
+    });
+
+    it('should return a response as an object', () => {
+      expect(response).to.be.an('object');
+    });
+  });
+
+  describe('historicalPrice()', () => {
+    let response: HistoricalPrice;
+
+    before(async () => {
+      response = await company.historicalPrice({ timeseries: 3 });
     });
 
     it('should return a response as an object', () => {
