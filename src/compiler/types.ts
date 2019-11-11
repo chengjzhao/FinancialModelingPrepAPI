@@ -1,3 +1,5 @@
+type StockSymbol = string;
+
 export interface HttpOptions {
   url: string;
   method?: string;
@@ -11,7 +13,7 @@ export interface HttpOptions {
 }
 
 export interface CompanyProfile {
-  symbol: string;
+  symbol: StockSymbol;
   profile: {
     price: number;
     beta: string;
@@ -29,6 +31,41 @@ export interface CompanyProfile {
     ceo: string;
     sector: string;
     image: string;
+  };
+}
+
+export interface CompanyRating {
+  symbol: StockSymbol;
+  rating: {
+    score: number;
+    rating: string;
+    recommendation: string;
+  };
+  ratingDetails: {
+    'P/B': {
+      score: number;
+      recommendation: string;
+    };
+    ROA: {
+      score: number;
+      recommendation: string;
+    };
+    DCF: {
+      score: number;
+      recommendation: string;
+    };
+    'P/E': {
+      score: number;
+      recommendation: string;
+    };
+    ROE: {
+      score: number;
+      recommendation: string;
+    };
+    'D/E': {
+      score: number;
+      recommendation: string;
+    };
   };
 }
 
@@ -120,17 +157,17 @@ export interface CashFlowStatement {
 }
 
 export interface IncomeStatements {
-  symbol: string;
+  symbol: StockSymbol;
   financials: IncomeStatement[];
 }
 
 export interface BalanceSheetStatements {
-  symbol: string;
+  symbol: StockSymbol;
   financials: BalanceSheetStatement[];
 }
 
 export interface CashFlowStatements {
-  symbol: string;
+  symbol: StockSymbol;
   financials: CashFlowStatement[];
 }
 
@@ -151,6 +188,129 @@ export interface FinancialRatio {
 }
 
 export interface FinancialRatios {
-  symbol: string;
+  symbol: StockSymbol;
   ratios: FinancialRatio[];
+}
+
+export interface EnterpriseValue {
+  date: string;
+  'Stock Price': string;
+  'Number of Shares': string;
+  'Market Capitalization': number;
+  '- Cash & Cash Equivalents': number;
+  '+ Total Debt': number;
+  'Enterprise Value': number;
+}
+
+export interface EnterpriseValues {
+  symbol: StockSymbol;
+  enterpriseValues: EnterpriseValue[];
+}
+
+export interface CompanyKeyMetric {
+  date: string;
+  'Revenue per Share': string;
+  'Net Income per Share': string;
+  'Operating Cash Flow per Share': string;
+  'Free Cash Flow per Share': string;
+  'Cash per Share': string;
+  'Book Value per Share': string;
+  'Tangible Book Value per Share': string;
+  'Shareholders Equity per Share': string;
+  'Interest Debt per Share': string;
+  'Market Cap': string;
+  'Enterprise Value': string;
+  'PE ratio': string;
+  'Price to Sales Ratio': string;
+  'POCF ratio': string;
+  'PFCF ratio': string;
+  'PB ratio': string;
+  'PTB ratio': string;
+  'EV to Sales': string;
+  'Enterprise Value over EBITDA': string;
+  'EV to Operating cash flow': string;
+  'EV to Free cash flow': string;
+  'Earnings Yield': string;
+  'Free Cash Flow Yield': string;
+  'Debt to Equity': string;
+  'Debt to Assets': string;
+  'Net Debt to EBITDA': string;
+  'Current ratio': string;
+  'Interest Coverage': string;
+  'Income Quality': string;
+  'Dividend Yield': string;
+  'Payout Ratio': string;
+  'SG&A to Revenue': string;
+  'R&D to Revenue': string;
+  'Intangibles to Total Assets': string;
+  'Capex to Operating Cash Flow': string;
+  'Capex to Revenue': string;
+  'Capex to Depreciation': string;
+  'Stock-based compensation to Revenue': string;
+  'Graham Number': string;
+  ROIC: string;
+  'Return on Tangible Assets': string;
+  'Graham Net-Net': string;
+  'Working Capital': string;
+  'Tangible Asset Value': string;
+  'Net Current Asset Value': string;
+  'Invested Capital': string;
+  'Average Receivables': string;
+  'Average Payables': string;
+  'Average Inventory': string;
+  'Days Sales Outstanding': string;
+  'Days Payables Outstanding': string;
+  'Days of Inventory on Hand': string;
+  'Receivables Turnover': string;
+  'Payables Turnover': string;
+  'Inventory Turnover': string;
+  ROE: string;
+  'Capex per Share': string;
+}
+
+export interface CompanyKeyMetrics {
+  symbol: StockSymbol;
+  enterpriseValues: CompanyKeyMetric[];
+}
+
+export interface FinancialStatementGrowth {
+  date: string;
+  'Gross Profit Growth': string;
+  'EBIT Growth': string;
+  'Operating Income Growth': string;
+  'Net Income Growth': string;
+  'EPS Growth': string;
+  'EPS Diluted Growth': string;
+  'Weighted Average Shares Growth': string;
+  'Weighted Average Shares Diluted Growth': string;
+  'Dividends per Share Growth': string;
+  'Operating Cash Flow growth': string;
+  'Free Cash Flow growth': string;
+  '10Y Revenue Growth (per Share)': string;
+  '5Y Revenue Growth (per Share)': string;
+  '3Y Revenue Growth (per Share)': string;
+  '10Y Operating CF Growth (per Share)': string;
+  '5Y Operating CF Growth (per Share)': string;
+  '3Y Operating CF Growth (per Share)': string;
+  '10Y Net Income Growth (per Share)': string;
+  '5Y Net Income Growth (per Share)': string;
+  '3Y Net Income Growth (per Share)': string;
+  '10Y Shareholders Equity Growth (per Share)': string;
+  '5Y Shareholders Equity Growth (per Share)': string;
+  '3Y Shareholders Equity Growth (per Share)': string;
+  '10Y Dividend per Share Growth (per Share)': string;
+  '5Y Dividend per Share Growth (per Share)': string;
+  '3Y Dividend per Share Growth (per Share)': string;
+  'Receivables growth': string;
+  'Inventory Growth': string;
+  'Asset Growth': string;
+  'Book Value per Share Growth': string;
+  'Debt Growth': string;
+  'R&D Expense Growth': string;
+  'SG&A Expenses Growth': string;
+}
+
+export interface FinancialStatementGrowths {
+  symbol: StockSymbol;
+  growth: FinancialStatementGrowth[];
 }
