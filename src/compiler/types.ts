@@ -360,3 +360,14 @@ export interface MostGainerStock {
 export interface MostLoserStock {
   mostLoserStock: StockUpdate[];
 }
+
+export interface Cryptocurrency {
+  ticker: string;
+  name: string;
+  changes: number;
+  marketCapitalization: number;
+}
+
+export interface Cryptocurrencies {
+  cryptocurrenciesList: Cryptocurrency[];
+}
